@@ -1,0 +1,44 @@
+{% include "header.html" with title=assignment.title %}
+
+<main>
+    <div class="title">
+        <h1>{{assignment.title}}</h1>
+        <p>Due {{assignment.deadline|date:"M d"}}, total of {{assignment.points}} point{{assignment.points|pluralize}}</p>
+    </div>
+
+    <!--Grading progress popup-->
+    {% if is_ta %}
+        <div class="action_card">
+            <div class="ac_first_line">
+                <p>Currently {{totalSubs}}/{{totalStudents}} submission{{totalStudents|pluralize}}</p>
+            </div>
+            <div class="ac_second_line">
+                <p>{{assignedSubs}} submission{{assignedSubs|pluralize}} assigned to you</p>
+                <a href="/{{assignment.id}}/submissions">Grade</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="action_card">
+            <div class="ac_first_line">
+                <p>{{student_message}}</p>
+            </div>
+            <div class="ac_second_line">
+                <p></p>
+                {% if notdue %}
+                    <form action="/{{assignment.id}}/submit/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="submittedFile">
+                        <input type="submit" name="submit">
+                    </form>
+                    <script type=module>
+                        import { make_form_async } from "/static/main.js";
+                        make_form_async($("form"));
+                    </script>    
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    
+    <!--The assignment-->
+    {{assignment.description|safe}}
+</main>

@@ -1,0 +1,47 @@
+{% include "header.html" with title="Profile" %}
+
+<main>
+    <div class="title">
+        <h1>Your grades</h1>
+    </div>
+
+    <!--Logged in profile popup-->
+    <div class="action_card ac_second_line">
+        <p>Currently logged in as {{user}}.</p>
+        <a href="/profile/logout">Log out</a>
+    </div>
+
+    <!--Assignments list table-->
+    <table>
+        <thead>
+            <tr>
+                <th>Assignment</th>
+                <th class="sortable number_col">Graded</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in assignment_data.items %}
+                <tr data-index={{forloop.counter}}>
+                    <td><a href="/{{key.id}}/submissions">{{key.title}}</a></td>
+                    <td data-weight={{key.weight}} data-value={{value}} class="number_col grade">{{value}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            {% if grade %}
+                <tr>
+                    <td><strong>Final Grade</strong></td>
+                    <td class="number_col"><strong>{{grade}}</strong></td>
+                </tr>
+                <script type=module>
+                    import { make_grade_hypothesized } from "/static/main.js";
+                    make_grade_hypothesized($("table"));
+                </script>
+            {% endif%}
+        </tfoot>
+    </table>
+    <script type=module>
+        import { make_table_sortable } from "/static/main.js";
+        make_table_sortable($("table"));
+    </script>
+</main>

@@ -1,0 +1,157 @@
+/* PHASE 2: Typography */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.25;
+}
+
+code {
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+table {
+    line-height: 1.5;
+}
+
+nav {
+    font-size: 1.25rem;
+    line-height: 2;
+}
+
+nav a {
+    color: #444;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.description {
+    font-size: 1rem;
+}
+
+#login, #login input {
+    font-family: 'IBM Plex Sans', sans-serif; /* Repeated to override default input css */
+    font-size: 1.25rem;
+}
+
+/* PHASE 3: Borders, backgrounds, and whitespace */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ddd;
+    box-shadow: 0 0 5px gray;
+}
+
+.action_card {
+    border: 2px solid #204a87;
+    background-color: #b1c3de;
+    padding: 0 1rem;
+}
+
+.ac_first_line p {
+    margin-bottom: 0;
+}
+
+.ac_second_line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+.title, .action_card, .description, p, ul, table {
+    margin-bottom: 1rem;
+}
+
+.title h1 {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Phase 4: Styling Links, Forms, and Tables */
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a:active {
+    color: #000;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+}
+
+.number_col {
+    text-align: right;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form_row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_row input {
+    width: 50%;
+    text-align: right;
+}
+
+.form_row label {
+    text-align: left;
+}
+
+.form_row.submit {
+    justify-content: center;
+}
+
+.form_row.submit input {
+    text-align: center;
+}
+
+.submission_options {
+    margin-right: 1rem;
+}
+
+/* Phase 5: Layout */
+main, nav {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav div strong {
+    margin-right: 1rem;
+}
+
+output {
+    color: red;
+}
+
+th.sortable { cursor: pointer; }
+th.sort-asc::after { content: " \25b2"; }
+th.sort-desc::after { content: " \25bc"; }
